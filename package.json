@@ -1,0 +1,23 @@
+{
+  "name": "project-cse-341",
+  "version": "1.0.0",
+  "description": "school project",
+  "homepage": "https://github.com/joojobill/Project-CSE-341#readme",
+  "bugs": {
+    "url": "https://github.com/joojobill/Project-CSE-341/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joojobill/Project-CSE-341.git"
+  },
+  "license": "ISC",
+  "author": "Isaac Hooper",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
