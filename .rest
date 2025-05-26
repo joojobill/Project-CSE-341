@@ -1,1 +1,4 @@
-GET 
+GET https://project-cse-341.onrender.com
+
+### Get by id 
+GET http://localhost:5000/Project-CSE-341/68349620e15542c038cf85aa

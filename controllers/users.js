@@ -5,21 +5,24 @@ const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req , res) => {
     const result = await mongobd.getDatabase().db().collection('users').find();
     result.toArray().then((users) => {
-        res.setHeader('Conect-type', 'application/json');
+        res.setHeader('Content-type', 'application/json');
         res.status(200).json(users);
     })
 
 };
 
-const getSingle = async (req , res) => {
-    const userId = new ObjectId(req.params.id);
-    const result = await mongobd.getDatabase().db().collection('users').find({_id: userId});
-    result.toArray().then((users) => {
-        res.setHeader('Conect-type', 'application/json');
-        res.status(200).json(users[0]);
-    })
-
-
+const getSingle = async (req, res) => {
+    try {
+        const userId = new ObjectId(req.params.id);
+        const user = await mongobd.getDatabase().db().collection('users').findOne({ _id: userId });
+        res.setHeader('Content-Type', 'application/json');
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(500).json({ error: 'Server error' });
+    }
 };
 
 const createUser = async (req, res) => {
