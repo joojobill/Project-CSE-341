@@ -44,9 +44,13 @@ router.put(
     '/:id',
     [
         param('id').isMongoId().withMessage('Invalid user ID'),
-        body('name').optional().notEmpty().withMessage('Name cannot be empty'),
+        body('firstName').optional().notEmpty().withMessage('First name is required'),
+        body('lastName').optional().notEmpty().withMessage('Last name is required'),
         body('email').optional().isEmail().withMessage('Valid email is required'),
-        body('password').optional().isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
+        body('studentId').optional().notEmpty().withMessage('Student ID is required'),
+        body('major').optional().notEmpty().withMessage('Major is required'),
+        body('gpa').optional().isFloat({ min: 0, max: 4 }).withMessage('GPA must be between 0 and 4'),
+        body('enrollmentDate').optional().isISO8601().withMessage('Enrollment date must be a valid date')
     ],
     handleValidation,
     usersController.updateUser

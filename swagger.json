@@ -36,16 +36,22 @@
                 "firstName": {
                   "example": "any"
                 },
-                "lastname": {
+                "lastName": {
                   "example": "any"
                 },
-                "Email": {
+                "email": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "studentId": {
                   "example": "any"
                 },
-                "birthday": {
+                "major": {
+                  "example": "any"
+                },
+                "gpa": {
+                  "example": "any"
+                },
+                "enrollmentDate": {
                   "example": "any"
                 }
               }
@@ -53,8 +59,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created"
           },
           "400": {
             "description": "Bad Request"
@@ -65,7 +71,7 @@
         }
       }
     },
-    "/Project-CSE-341/": {
+    "/collections/": {
       "get": {
         "description": "",
         "produces": [
@@ -89,16 +95,22 @@
                 "firstName": {
                   "example": "any"
                 },
-                "lastname": {
+                "lastName": {
                   "example": "any"
                 },
-                "Email": {
+                "email": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "studentId": {
                   "example": "any"
                 },
-                "birthday": {
+                "major": {
+                  "example": "any"
+                },
+                "gpa": {
+                  "example": "any"
+                },
+                "enrollmentDate": {
                   "example": "any"
                 }
               }
@@ -106,8 +118,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created"
           },
           "400": {
             "description": "Bad Request"
@@ -118,7 +130,7 @@
         }
       }
     },
-    "/Project-CSE-341/{id}": {
+    "/collections/{id}": {
       "get": {
         "description": "",
         "produces": [
@@ -162,16 +174,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastname": {
                   "example": "any"
                 },
                 "email": {
                   "example": "any"
                 },
-                "name": {
+                "studentId": {
                   "example": "any"
                 },
-                "ipaddress": {
+                "major": {
+                  "example": "any"
+                },
+                "gpa": {
+                  "example": "any"
+                },
+                "enrollmentDate": {
                   "example": "any"
                 }
               }
@@ -198,27 +219,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "username": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "name": {
-                  "example": "any"
-                },
-                "ipaddress": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
@@ -227,6 +227,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -278,16 +281,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastname": {
                   "example": "any"
                 },
                 "email": {
                   "example": "any"
                 },
-                "name": {
+                "studentId": {
                   "example": "any"
                 },
-                "ipaddress": {
+                "major": {
+                  "example": "any"
+                },
+                "gpa": {
+                  "example": "any"
+                },
+                "enrollmentDate": {
                   "example": "any"
                 }
               }
@@ -314,27 +326,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "username": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "name": {
-                  "example": "any"
-                },
-                "ipaddress": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
@@ -343,6 +334,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"

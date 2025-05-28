@@ -4,7 +4,7 @@ GET https://project-cse-341.onrender.com
 GET http://localhost:5000/collections
 
 ### Get by ID   
-GET http://localhost:5000/collections/6835df582533fa91cc1c7792
+GET http://localhost:5000/collections/6835f7476a2c1c0634dd6b37
 
 ### Create a new collection
 POST http://localhost:5000/collections 
@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ### Get update by ID
-PUT http://localhost:5000/collections/6835df582533fa91cc1c7792 HTTP/1.1
+PUT http://localhost:5000/collections/6835f7476a2c1c0634dd6b37 
 Content-Type: application/json
 
 {
@@ -33,7 +33,7 @@ Content-Type: application/json
   "studentId": "STU1001",
   "major": "Computer Science",
   "gpa": 3.2,
-  "enrollmentDate": "2023-09-01T00:00:00M"
+  "enrollmentDate": "2023-09-01"
 }
 
 ### Delete by ID

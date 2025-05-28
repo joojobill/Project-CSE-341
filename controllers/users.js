@@ -51,7 +51,7 @@ const updateUser = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     const user = {
         firstName: req.body.firstName,
-        lastname: req.body.lastname,
+        lastName: req.body.lastName,
         email: req.body.email,
         studentId: req.body.studentId,
         major: req.body.major,
@@ -69,7 +69,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     try {
         const userId = new ObjectId(req.params.id);
-        const response = await mongobd.getDatabase().db().collection('collections').deleteOne({ _id: userId });
+        const response = await mongobd.getDatabase().db().collection('users').deleteOne({ _id: userId });
         if (response.deletedCount > 0) {
             res.status(204).send();
         } else {
