@@ -26,21 +26,24 @@ const getSingle = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-    const userId = new ObjectId(req.params.id);
-    const user = {
-        firstName: req.body.firstName,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        studentId: req.body.studentId,
-        major: req.body.major,
-        gpa: req.body.gpa,
-        enrollmentDate: req.body.enrollmentDate
-    };
-    const response = await mongobd.getDatabase().db().collection('collections').insertOne(user);
-    if (response.acknowledge)  {
-        res.status(200).send();
-    } else {
-        res.status(500).json(response.error || 'some error occured while updating the user');
+    try {
+        const user = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName, 
+            email: req.body.email,
+            studentId: req.body.studentId,
+            major: req.body.major,
+            gpa: req.body.gpa,
+            enrollmentDate: req.body.enrollmentDate
+        };
+        const response = await mongobd.getDatabase().db().collection('users').insertOne(user); // use 'users'
+        if (response.acknowledged) { 
+            res.status(201).json({ _id: response.insertedId, ...user });
+        } else {
+            res.status(500).json(response.error || 'Some error occurred while creating the user');
+        }
+    } catch (err) {
+        res.status(500).json({ error: 'Server error' });
     }
 };
 
@@ -64,26 +67,18 @@ const updateUser = async (req, res) => {
     
 };
 const deleteUser = async (req, res) => {
-    const userId = new ObjectId(req.params.id);
-
-    const user = {
-        firstName: req.body.firstName,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        studentId: req.body.studentId,
-        major: req.body.major,
-        gpa: req.body.gpa,
-        enrollmentDate: req.body.enrollmentDate
-    };
-     const response = await mongobd.getDatabase().db().collection('collections').remove({_id: userId}, user);
-    if (response.deleteCount > 0)  {
-        res.status(204).send();
-    } else {
-        res.status(500).json(response.error || 'some error occured while deleting the user');
-    };
-
+    try {
+        const userId = new ObjectId(req.params.id);
+        const response = await mongobd.getDatabase().db().collection('collections').deleteOne({ _id: userId });
+        if (response.deletedCount > 0) {
+            res.status(204).send();
+        } else {
+            res.status(404).json({ message: 'User not found or already deleted' });
+        }
+    } catch (err) {
+        res.status(500).json({ error: 'Server error' });
+    }
 };
-
  
 module.exports = {
     getAll,

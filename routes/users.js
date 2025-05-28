@@ -27,9 +27,13 @@ router.get(
 router.post(
     '/',
     [
-        body('name').notEmpty().withMessage('Name is required'),
+        body('firstName').notEmpty().withMessage('First name is required'),
+        body('lastName').notEmpty().withMessage('Last name is required'),
         body('email').isEmail().withMessage('Valid email is required'),
-        body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
+        body('studentId').notEmpty().withMessage('Student ID is required'),
+        body('major').notEmpty().withMessage('Major is required'),
+        body('gpa').isFloat({ min: 0, max: 4 }).withMessage('GPA must be between 0 and 4'),
+        body('enrollmentDate').isISO8601().withMessage('Enrollment date must be a valid date')
     ],
     handleValidation,
     usersController.createUser

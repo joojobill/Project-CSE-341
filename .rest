@@ -6,11 +6,24 @@ GET http://localhost:5000/collections
 ### Get by ID   
 GET http://localhost:5000/collections/6835df582533fa91cc1c7792
 
+### Create a new collection
+POST http://localhost:5000/collections 
+Content-Type: application/json
+
+{
+
+  "firstName": "Ben",
+  "lastName": "cooper",
+  "email": "ben@exaple.com",
+  "studentId": "STU1001",
+  "major": "Computer Science",
+  "gpa": 3.2,
+  "enrollmentDate": "2023-09-27"
+}
+
 ### Get update by ID
 PUT http://localhost:5000/collections/6835df582533fa91cc1c7792 HTTP/1.1
 Content-Type: application/json
-
-
 
 {
 
@@ -23,6 +36,5 @@ Content-Type: application/json
   "enrollmentDate": "2023-09-01T00:00:00M"
 }
 
-
 ### Delete by ID
-DELETE http://localhost:5000/collections/6835df582533fa91cc1c7792
+DELETE http://localhost:5000/collections/6835df582533fa91cc1c7792 HTTP/1.1
