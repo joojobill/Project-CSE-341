@@ -2,15 +2,21 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
     info: {
-        title: 'User Api',
-        description: 'User Api'
-
+        title: 'User API',
+        description: 'User API with authentication'
     },
     host: 'localhost:5000',
-    schemes: ['http', 'https']
+    schemes: ['http'],
+    securityDefinitions: {
+        cookieAuth: {
+            type: 'apiKey',
+            in: 'cookie',
+            name: 'connect.sid'
+        }
+    }
 };
-const outputFile =  './swagger.json';
-const endpointsFiles = ['./routes/index.js', './routes/swagger.js', './routes/users.js'];
 
-//  this will generate swagger.json
+const outputFile = './swagger.json';
+const endpointsFiles = ['./routes/index.js', './routes/users.js'];
+
 swaggerAutogen(outputFile, endpointsFiles, doc);

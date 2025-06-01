@@ -1,4 +1,4 @@
-GET https://project-cse-341.onrender.com
+GET https://project-cse-341.onrender.c
 
 ### Get by all collections 
 GET http://localhost:5000/collections
@@ -28,7 +28,7 @@ Content-Type: application/json
 {
 
   "firstName": "kojo",
-  "lastName": "Hooper",
+  "lastName": "cooper",
   "email": "kojo@exaple.com",
   "studentId": "STU1001",
   "major": "Computer Science",
@@ -37,4 +37,4 @@ Content-Type: application/json
 }
 
 ### Delete by ID
-DELETE http://localhost:5000/collections/6835df582533fa91cc1c7792 HTTP/1.1
+DELETE http://localhost:5000/collections/6838c99c96540fa9d22a0338 HTTP/1.1
