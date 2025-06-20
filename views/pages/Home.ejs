@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home | Project CSE-341</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Project CSE-341</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.htm">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contacts</a></li>
+                <li><a href="/projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <% if (typeof user !== 'undefined' && user) { %>
+            <h2>Hello, <%= user.name %>!</h2>
+            <p>Welcome back to your dashboard.</p>
+        <% } else { %>
+            <h2>Hello, Guest!</h2>
+            <p>Please <a href="/login">login</a> to access your dashboard.</p>
+        <% } %>
+
+        <% if (typeof projects !== 'undefined' && projects.length > 0) { %>
+            <section>
+                <h3>Your Projects</h3>
+                <ul>
+                    <% projects.forEach(function(project) { %>
+                        <li>
+                            <a href="/projects/<%= project._id %>"><%= project.title %></a>
+                            <span>- <%= project.status %></span>
+                        </li>
+                    <% }); %>
+                </ul>
+            </section>
+        <% } else { %>
+            <section>
+                <h3>No projects found.</h3>
+                <p><a href="/projects/new">Create your first project</a></p>
+            </section>
+        <% } %>
+    </main>
+    <footer>
+        <p>&copy; <%= new Date().getFullYear() %> Project CSE-341</p>
+    </footer>
+</body>
+</html>
